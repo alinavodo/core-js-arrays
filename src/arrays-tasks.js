@@ -193,8 +193,8 @@ function getHead(arr, n) {
  *    getTail([ 'a', 'b', 'c', 'd'], 3) => [ 'b', 'c', 'd' ]
  *    getTail([ 'a', 'b', 'c', 'd'], 0) => []
  */
-function getTail(arr, n) {
-  return arr.slice(-n);
+function getTail(/* arr, n */) {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -210,7 +210,7 @@ function getTail(arr, n) {
  *    doubleArray([]) => []
  */
 function doubleArray(arr) {
-  return [...arr, ...arr];
+  return arr.concat(arr);
 }
 
 /**
@@ -241,7 +241,7 @@ function toStringList(arr) {
  *   distinct([]) => []
  */
 function distinct(arr) {
-  return arr.filter((value, index, array) => array.indexOf(value) === index)
+  return [...new Set(arr)];
 }
 
 /**
@@ -394,8 +394,8 @@ function getFalsyValuesCount(arr) {
  */
 function getIdentityMatrix(n) {
   return [...Array(n)].map((e1, x, arr) =>
-  arr.map((e2, y) => (x === y ? 1 : 0))
-);
+    arr.map((e2, y) => (x === y ? 1 : 0))
+  );
 }
 
 /**
@@ -537,7 +537,7 @@ function sortDigitNamesByNumericOrder(arr) {
     'eight',
     'nine',
   ];
-  return arr.sort((a, b) => ArrNumber.indexOf(a) - ArrNumber.indexOf(b
+  return arr.sort((a, b) => ArrNumber.indexOf(a) - ArrNumber.indexOf(b));
 }
 
 /**
