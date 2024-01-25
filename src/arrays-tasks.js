@@ -119,8 +119,14 @@ function getStringsLength(arr) {
  *   getAverage([ 1, 10, 100, 1000 ])  => 277,75
  *   getAverage([ 2, 3, 3 ])  => 2,67
  */
-function getAverage(/* arr */) {
-  throw new Error('Not implemented');
+function getAverage(arr) {
+  const i = 0;
+  if (arr.length === 0) return 0;
+  return Number.parseFloat(
+    (
+      arr.reduce((acc, currentValue) => acc + currentValue, i) / arr.length
+    ).toFixed(2)
+  );
 }
 
 /**
@@ -133,8 +139,8 @@ function getAverage(/* arr */) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  return arr.every((item) => item.length === arr[0].length);
 }
 
 /**
@@ -306,8 +312,12 @@ function selectMany(arr, childrenSelector) {
  *   calculateBalance([ [ 10, 8 ], [ 1, 5 ] ])  => (10 - 8) + (1 - 5) = 2 + -4 = -2
  *   calculateBalance([]) => 0
  */
-function calculateBalance(/* arr */) {
-  throw new Error('Not implemented');
+function calculateBalance(arr) {
+  return arr
+    .map((item) => {
+      return item[0] - item[1];
+    })
+    .reduce((acc, item) => acc + item, 0);
 }
 
 /**
@@ -411,8 +421,11 @@ function getIdentityMatrix(n) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  return numbers.reduce((acc, value, index) => {
+    if (value % 2) acc.push(index);
+    return acc;
+  }, []);
 }
 
 /**
@@ -459,8 +472,11 @@ function getMaxItems(/* arr, n */) {
  *    findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) => [ 'b', 'c' ]
  *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
  */
-function findCommonElements(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function findCommonElements(arr1, arr2) {
+  return arr1.reduce((acc, cur) => {
+    if (arr2.includes(cur)) acc.push(cur);
+    return acc;
+  }, []);
 }
 
 /**
@@ -564,8 +580,12 @@ function sortDigitNamesByNumericOrder(arr) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  if (arr.length < 2) return arr;
+  return arr
+    .slice(-arr.length / 2)
+    .concat(arr.length % 2 ? arr[Math.floor(arr.length / 2)] : [])
+    .concat(arr.slice(0, arr.length / 2));
 }
 
 module.exports = {
